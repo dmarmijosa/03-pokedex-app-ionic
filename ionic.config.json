@@ -1,0 +1,7 @@
+{
+  "name": "03-pokedex-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
