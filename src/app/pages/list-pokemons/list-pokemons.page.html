@@ -1,0 +1,30 @@
+<ion-header [translucent]="true"></ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    @for (pokemon of pokemonsList; track $index) {
+    <ion-row class="flex items-center p-2 border-b border-gray-200 gap-2">
+      <ion-col size="3">
+        <ion-img [src]="pokemon.sprites.front_default" />
+      </ion-col>
+      <ion-col size="4">
+        <ion-text class="capitalize">{{pokemon.name}}</ion-text>
+      </ion-col>
+      <ion-col size="2">
+        <ion-img [src]="'assets/img/'+pokemon.types[0].type.name+'.gif'" />
+      </ion-col>
+      <ion-col size="2">
+        @if(pokemon.types.length > 1){
+        <ion-img [src]="'assets/img/'+pokemon.types[1].type.name+'.gif'" />
+        }
+      </ion-col>
+    </ion-row>
+    }
+  </ion-grid>
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Please wait"
+    />
+  </ion-infinite-scroll>
+</ion-content>

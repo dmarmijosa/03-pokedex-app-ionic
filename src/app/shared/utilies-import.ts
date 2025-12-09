@@ -1,0 +1,26 @@
+import {
+  IonGrid,
+  IonCol,
+  IonRow,
+  IonText,
+  IonTitle,
+  IonContent,
+  IonHeader,
+  IonToolbar,
+  IonImg,
+  IonInfiniteScroll,
+  IonInfiniteScrollContent,
+} from '@ionic/angular/standalone';
+export const ION_COMPONENTS = [
+  IonGrid,
+  IonCol,
+  IonTitle,
+  IonRow,
+  IonText,
+  IonContent,
+  IonHeader,
+  IonToolbar,
+  IonImg,
+  IonInfiniteScroll,
+  IonInfiniteScrollContent,
+];
