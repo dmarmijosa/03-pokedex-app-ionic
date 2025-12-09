@@ -1,0 +1,216 @@
+.pokemon-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 40px;
+}
+
+.pokemon-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+
+  .image-container {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2));
+    }
+  }
+
+  .pokemon-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0;
+    color: var(--ion-text-color);
+  }
+
+  .pokemon-id {
+    font-size: 1.2rem;
+    color: var(--ion-color-medium);
+    font-weight: 600;
+  }
+}
+
+.types-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  ion-chip {
+    margin: 0;
+    font-weight: 600;
+
+    &.grass {
+      --background: #78c850;
+      --color: white;
+    }
+    &.fire {
+      --background: #f08030;
+      --color: white;
+    }
+    &.water {
+      --background: #6890f0;
+      --color: white;
+    }
+    &.bug {
+      --background: #a8b820;
+      --color: white;
+    }
+    &.normal {
+      --background: #a8a878;
+      --color: white;
+    }
+    &.poison {
+      --background: #a040a0;
+      --color: white;
+    }
+    &.electric {
+      --background: #f8d030;
+      --color: black;
+    }
+    &.ground {
+      --background: #e0c068;
+      --color: black;
+    }
+    &.fairy {
+      --background: #ee99ac;
+      --color: black;
+    }
+    &.fighting {
+      --background: #c03028;
+      --color: white;
+    }
+    &.psychic {
+      --background: #f85888;
+      --color: white;
+    }
+    &.rock {
+      --background: #b8a038;
+      --color: white;
+    }
+    &.ghost {
+      --background: #705898;
+      --color: white;
+    }
+    &.ice {
+      --background: #98d8d8;
+      --color: black;
+    }
+    &.dragon {
+      --background: #7038f8;
+      --color: white;
+    }
+    &.dark {
+      --background: #705848;
+      --color: white;
+    }
+    &.steel {
+      --background: #b8b8d0;
+      --color: black;
+    }
+    &.flying {
+      --background: #a890f0;
+      --color: white;
+    }
+  }
+}
+
+.physical-info {
+  display: flex;
+  justify-content: space-around;
+  background: var(--ion-color-light);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 0 10px;
+
+  .info-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    .value {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .label {
+      font-size: 0.9rem;
+      color: var(--ion-color-medium);
+    }
+  }
+}
+
+.stats-section {
+  padding: 0 10px;
+
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--ion-text-color);
+  }
+
+  .stat-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 10px;
+
+    .stat-label {
+      width: 100px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ion-color-medium);
+    }
+
+    .stat-bar-container {
+      flex: 1;
+
+      ion-progress-bar {
+        height: 8px;
+        border-radius: 4px;
+      }
+    }
+
+    .stat-value {
+      width: 30px;
+      text-align: right;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.abilities-section {
+  padding: 0 10px;
+
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--ion-text-color);
+  }
+
+  .abilities-list {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    ion-badge {
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-radius: 8px;
+    }
+  }
+}

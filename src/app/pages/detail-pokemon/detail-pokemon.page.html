@@ -1,7 +1,87 @@
-<ion-content [fullscreen]="true">
-  <ion-fab vertical="top" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="goBack()">
-      <ion-icon name="arrow-back"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title> @if (pokemon(); as p) { {{ p.name | titlecase }} } </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  @if (pokemon(); as p) {
+  <div class="pokemon-container">
+    <!-- Header con Imagen -->
+    <div class="pokemon-header">
+      <div class="image-container">
+        <img
+          [ngSrc]="pokemonImage()"
+          width="200"
+          height="200"
+          [alt]="p.name"
+          priority
+        />
+      </div>
+      <h1 class="pokemon-name">{{ p.name | titlecase }}</h1>
+      <div class="pokemon-id">#{{ p.id | number:'3.0' }}</div>
+    </div>
+
+    <!-- Tipos -->
+    <div class="types-container">
+      @for (t of p.types; track t.type.name) {
+      <ion-chip class="px-3" [class]="t.type.name">
+        <ion-label>{{ t.type.name | titlecase }}</ion-label>
+      </ion-chip>
+      }
+    </div>
+
+    <!-- Info Física -->
+    <div class="physical-info">
+      <div class="info-box">
+        <span class="value">{{ p.weight / 10 }} kg</span>
+        <span class="label">Weight</span>
+      </div>
+      <div class="info-box">
+        <span class="value">{{ p.height / 10 }} m</span>
+        <span class="label">Height</span>
+      </div>
+      <div class="info-box">
+        <span class="value">{{ p.base_experience }}</span>
+        <span class="label">Base Exp</span>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-section">
+      <h3>Base Stats</h3>
+      @for (stat of p.stats; track stat.stat.name) {
+      <div class="stat-row">
+        <div class="stat-label">
+          <span>{{ stat.stat.name | titlecase }}</span>
+        </div>
+        <div class="stat-bar-container">
+          <ion-progress-bar
+            [value]="stat.base_stat / 100"
+            [color]="stat.base_stat > 50 ? 'success' : 'warning'"
+          ></ion-progress-bar>
+        </div>
+        <div class="stat-value">{{ stat.base_stat }}</div>
+      </div>
+      }
+    </div>
+
+    <!-- Habilidades -->
+    <div class="abilities-section">
+      <h3>Abilities</h3>
+      <div class="abilities-list">
+        @for (ability of p.abilities; track ability.ability?.name) {
+        <ion-badge color="medium">
+          {{ ability.ability?.name | titlecase }}
+        </ion-badge>
+        }
+      </div>
+    </div>
+  </div>
+  }
 </ion-content>

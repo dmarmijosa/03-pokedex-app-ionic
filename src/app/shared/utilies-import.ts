@@ -13,6 +13,12 @@ import {
   IonFab,
   IonFabButton,
   IonIcon,
+  IonButton,
+  IonButtons,
+  IonLabel,
+  IonChip,
+  IonBadge,
+  IonProgressBar,
 } from '@ionic/angular/standalone';
 export const ION_COMPONENTS = [
   IonGrid,
@@ -29,4 +35,10 @@ export const ION_COMPONENTS = [
   IonFab,
   IonFabButton,
   IonIcon,
+  IonButton,
+  IonButtons,
+  IonLabel,
+  IonChip,
+  IonBadge,
+  IonProgressBar,
 ];
