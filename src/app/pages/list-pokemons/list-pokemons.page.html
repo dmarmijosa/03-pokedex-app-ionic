@@ -3,19 +3,23 @@
 <ion-content [fullscreen]="true">
   <ion-grid>
     @for (pokemon of pokemonsList; track $index) {
-    <ion-row class="flex items-center p-2 border-b border-gray-200 gap-2">
+    <ion-row class="pokemon-row" (click)="goToDetail(pokemon)">
       <ion-col size="3">
-        <ion-img [src]="pokemon.sprites.front_default" />
+        <ion-img [src]="pokemon.sprites.front_default" class="pokemon-sprite" />
       </ion-col>
-      <ion-col size="4">
-        <ion-text class="capitalize">{{pokemon.name}}</ion-text>
+      <ion-col size="5">
+        <ion-text class="pokemon-name">{{pokemon.name}}</ion-text>
       </ion-col>
-      <ion-col size="2">
-        <ion-img [src]="'assets/img/'+pokemon.types[0].type.name+'.gif'" />
-      </ion-col>
-      <ion-col size="2">
+      <ion-col size="4" class="types-container">
+        <ion-img
+          [src]="'assets/img/'+pokemon.types[0].type.name+'.gif'"
+          class="type-icon"
+        />
         @if(pokemon.types.length > 1){
-        <ion-img [src]="'assets/img/'+pokemon.types[1].type.name+'.gif'" />
+        <ion-img
+          [src]="'assets/img/'+pokemon.types[1].type.name+'.gif'"
+          class="type-icon"
+        />
         }
       </ion-col>
     </ion-row>

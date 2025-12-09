@@ -10,6 +10,9 @@ import {
   IonImg,
   IonInfiniteScroll,
   IonInfiniteScrollContent,
+  IonFab,
+  IonFabButton,
+  IonIcon,
 } from '@ionic/angular/standalone';
 export const ION_COMPONENTS = [
   IonGrid,
@@ -23,4 +26,7 @@ export const ION_COMPONENTS = [
   IonImg,
   IonInfiniteScroll,
   IonInfiniteScrollContent,
+  IonFab,
+  IonFabButton,
+  IonIcon,
 ];

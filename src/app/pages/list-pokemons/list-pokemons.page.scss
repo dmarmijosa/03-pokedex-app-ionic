@@ -1,0 +1,24 @@
+@import "tailwindcss";
+.pokemon-row {
+  @apply flex items-center p-4 border-b border-gray-100 gap-4 transition-all duration-200 bg-white hover:bg-gray-50;
+
+  &:active {
+    @apply bg-gray-100;
+  }
+}
+
+.pokemon-name {
+  @apply capitalize text-xl font-bold text-gray-800 tracking-wide;
+}
+
+.pokemon-sprite {
+  @apply w-20 h-20 object-contain drop-shadow-md;
+}
+
+.types-container {
+  @apply flex flex-row justify-end items-center gap-2;
+}
+
+.type-icon {
+  @apply w-14 h-14 object-contain opacity-100 hover:scale-110 transition-transform;
+}

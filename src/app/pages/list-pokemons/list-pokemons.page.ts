@@ -5,6 +5,7 @@ import { PokemonService } from 'src/app/services/pokemon-service';
 import { UtiliesService } from 'src/app/shared/utilies-service';
 import { ION_COMPONENTS } from '../../shared/utilies-import';
 import { Pokemon } from 'src/app/interfaces/pokemons.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-pokemons',
@@ -16,32 +17,20 @@ import { Pokemon } from 'src/app/interfaces/pokemons.interface';
 export class ListPokemonsPage implements OnInit {
   private readonly pokemonService = inject(PokemonService);
   private readonly sharedService = inject(UtiliesService);
+  private readonly router = inject(Router);
   pokemonsList: Pokemon[] = [];
   private offset = signal(0);
   private limit = signal(20);
   constructor() {}
 
   ngOnInit() {
+    this.sharedService.presentLoading('Loading Pokémon list...');
     this.pokemonService.getPokemonList().subscribe({
       next: (response) => {
         this.pokemonsList = response;
-        console.log(response);
       },
       complete: () => {
-        this.sharedService.presentLoading('Pokémon list loaded!');
-        console.log('Completed fetching Pokémon list');
-      },
-    });
-  }
-  private loadPokemons() {
-    this.pokemonService.getPokemonList(this.offset(), this.limit()).subscribe({
-      next: (response) => {
-        this.pokemonsList = [...this.pokemonsList, ...response];
-        console.log(response);
-      },
-      complete: () => {
-        this.sharedService.presentLoading('Pokémon list loaded!');
-        console.log('Completed fetching Pokémon list');
+        this.sharedService.dismissLoading();
       },
     });
   }
@@ -63,5 +52,9 @@ export class ListPokemonsPage implements OnInit {
       },
     });
     console.log(event);
+  }
+
+  goToDetail(pokemon: Pokemon) {
+    this.router.navigate(['/detail-pokemon', pokemon.id]);
   }
 }

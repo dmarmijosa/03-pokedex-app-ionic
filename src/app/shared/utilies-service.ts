@@ -6,14 +6,28 @@ import { IonButton, LoadingController } from '@ionic/angular/standalone';
 })
 export class UtiliesService {
   private readonly loadingController = new LoadingController();
+  private loadingElement: HTMLIonLoadingElement | null = null;
+  async presentLoading(message: string = 'Please wait...', duration?: number) {
+    // Si ya hay uno mostrándose, lo cerramos para evitar duplicados
+    if (this.loadingElement) {
+      await this.dismissLoading();
+    }
 
-  async presentLoading(message: string = 'Please wait...') {
-    const loading = await this.loadingController.create({
+    this.loadingElement = await this.loadingController.create({
       message,
-      duration: 100,
+      duration: duration, // Si es undefined, se queda cargando infinitamente
       spinner: 'crescent',
     });
-    await loading.present();
-    return loading;
+
+    await this.loadingElement.present();
+    return this.loadingElement;
+  }
+
+  // Método para cerrar el loading manualmente
+  async dismissLoading() {
+    if (this.loadingElement) {
+      await this.loadingElement.dismiss();
+      this.loadingElement = null;
+    }
   }
 }

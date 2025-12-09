@@ -28,4 +28,8 @@ export class PokemonService {
       `${environment.base_url}pokemon/${name}`
     );
   }
+
+  getPokemonById(id: number) {
+    return this.httpClient.get<Pokemon>(`${environment.base_url}pokemon/${id}`);
+  }
 }
